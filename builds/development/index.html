@@ -7,13 +7,206 @@
   <link rel="stylesheet" href="css/anotherstyle.css">
 </head>
 <body>
-  <h1>what to buy</h1>
-  <p title="pptitle">pp content</p>
-  <ul id="purchases">
-    <li>aa</li>
-    <li>bb</li>
-    <li>cc</li>
-  </ul>
+  <div class="col-md-90 center">
+    <h1>h1 element node</h1>
+    <p title="p-title-1">paragraph node with title='p-title-1'</p>
+    <p title="p-title-2">paragraph node with title='p-title-2'</p>
+    <p title="p-title-3">paragraph node with title='p-title-3'</p>
+
+    <ul id="purchase">
+      <li class="sale">list element 1</li>
+      <li class="sale">list element 2</li>
+      <li>list element 3</li>
+    </ul>
+  </div>
+  <p>0 Get elements</p>
+  <div class="col-md-40">
+    <pre>
+//1 loop through the array that the .getElementByTagName returns
+//BP -> var liItem=document.getElementsByTagName("li");
+    </pre>
+  </div>
+  <div class="col-md-50">
+    <pre>
+  var liItem=document.getElementsByTagName("li");
+  for(var i=0;i < liItem.length;i++){
+    console.log(typeof liItem[i]);
+  }
+
+  //object
+  //object
+  //object
+    </pre>
+  </div>
+<!--end of 1-->
+  <div class="col-md-40">
+    <pre>
+//2 use wild character to display
+    the total number of the nods in a document
+    </pre>
+  </div>
+  <div class="col-md-50">
+    <pre>
+var totalNodeArray=document.getElementsByTagName("*");
+console.log('2 node total number is '+totalNodeArray.length);
+
+
+//2 node total number is 59
+    </pre>
+  </div>
+<!--end of 2-->
+  <div class="col-md-40">
+    <pre>
+//3 combine getElementById and getElementByTagName to get
+    the total number of nodes inside of a element
+    whose id is 'purchase'
+    </pre>
+  </div>
+  <div class="col-md-50">
+    <pre>
+var purchaseNode=document.getElementById("purchase");
+var nodesInPurchase=purchaseNode.getElementsByTagName("*");
+console.log('3 node total number in #purchase is '+nodesInPurchase.length);
+
+//3 node total number in #purchase is 3
+    </pre>
+  </div>
+  <!--end of 3-->
+  <div class="col-md-40">
+    <pre>
+//4 combine getElementById and getElementByClassName to get
+    the total number of nodes whose class is "sale" and
+    inside #purchase
+
+    </pre>
+  </div>
+  <div class="col-md-50">
+    <pre>
+var nodesClassInPurchases=purchaseNode.getElementsByClassName("sale");
+console.log("4 node total number whose class is sale
+and in #purchase is "+nodesClassInPurchases.length);
+    </pre>
+  </div>
+  <!---->
+  <div class="col-md-40">
+    <pre>
+//5 how to implement getElementByClassName for some
+    old browsers that do not support getElementByClassName?
+    We have to do that ourselves
+    </pre>
+  </div>
+  <div class="col-md-50">
+    <pre>
+function customGetElementByClassName(node, classname){
+  if(node.getElementsByClassName){
+    return node.getElementsByClassName(classname);
+  }else{
+    var results=new Array();
+    var elems=node.getElementsByTagName("*");//nodes collection
+    for(var i=0;i < elems.length;i++){
+      if(elems[i].className.indexOf(classname)!= -1){
+        results[results.length]=elems[i];
+      }
+    }
+  }
+}
+
+var nodesClassInPurchases_5 = customGetElementByClassName(purchaseNode,"sale");
+console.log("5 node total number whose class is sale
+and in #purchase is "+nodesClassInPurchases.length+
+" using our custome method");
+//5 node total number whose class is sale and
+in #purchase is 2 using our custome method
+    </pre>
+  </div>
+  <!---->
+  <div class="col-md-40">
+    <pre>
+//0 get and set attributes
+//we use getElementById, getElementByTagName, and
+getElementByClassName to get the element, in addition,
+we use getAttribute to get the element's attribute and
+use setAttribute to set the value of attribute
+    </pre>
+  </div>
+  <div class="col-md-50">
+    <pre>
+
+    </pre>
+  </div>
+  <!---->
+  <div class="col-md-40">
+    <pre>
+//6 object.getAttribute(attribute)
+//invoked by element node, for example, combined with
+  getElementByTagName to get the title attribute
+  in each p element tag
+    </pre>
+  </div>
+  <div class="col-md-50">
+    <pre>
+var paras_6=document.getElementsByTagName("p");
+for(var i=0;i< paras_6.length;i++){
+  var title_text_6=paras_6[i].getAttribute("title");
+  if(title_text_6){
+  //only console log the title that is not null
+    console.log("6 "+title_text_6);
+  }
+}
+//6 p-title-1
+//6 p-title-2
+//6 p-title-3
+    </pre>
+  </div>
+  <!---->
+  <div class="col-md-40">
+    <pre>
+//7 object.setAttribute( attribute,value )
+//like getAttribute(), this method is only invoked
+by element node
+
+//set the attribute of title in the element whose id
+is #purchase to "a list of goods"
+
+//if the attribute does not exist, this method would
+create one for it and then set the value we want
+    </pre>
+  </div>
+  <div class="col-md-50">
+    <pre>
+var id_node_purchase_7=document.getElementById("purchase");
+id_node_purchase_7.setAttribute("title","a list of goods");
+console.log("7 the title of the element whose id is purchase is "
++id_node_purchase_7.getAttribute("title"));
+
+
+//7 the title of the element whose id is purchase is a list of goods
+    </pre>
+  </div>
+  <!---->
+  <div class="col-md-40">
+    <pre>
+
+    </pre>
+  </div>
+  <div class="col-md-50">
+    <pre>
+
+    </pre>
+  </div>
+  <!---->
+  <div class="col-md-40">
+    <pre>
+
+    </pre>
+  </div>
+  <div class="col-md-50">
+    <pre>
+
+    </pre>
+  </div>
+  <!---->
+
 <script src="js/lib/app.js"></script>
 </body>
 </html>
