@@ -1,3 +1,5 @@
+var test1=document.getElementsByTagName("body")[0];
+console.log(test1.childNodes);
 //0 get elements
 //1 loop through the array that the .getElementByTagName returns
 //BP -> var liItem=document.getElementsByTagName("li");
